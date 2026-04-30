@@ -1,4 +1,4 @@
-Guide: Implementing a GC Intranet via Git, MkDocs, and NGINX
+# Guide: Implementing a GC Intranet via Git, MkDocs, and NGINX
 1. Architectural Overview
 This intranet architecture utilizes a Static Site Generator (SSG) approach. It separates content creation from presentation and hosting to ensure security and performance within a firewalled environment.
 Version Control: Hosted on GCcode (GitLab) using `staging` and `main` branches.
@@ -6,7 +6,7 @@ Engine: MkDocs with the `static-i18n` plugin for bilingual routing.
 UI: GCWeb (Canada.ca Design System) delivered via CDN.
 Hosting: NGINX serving two distinct paths: `/` (Production) and `/preview` (Staging).
 ---
-2. Configuration Core (`mkdocs.yml`)
+## 2. Configuration Core (`mkdocs.yml`)
 The `mkdocs.yml` file manages your bilingual navigation labels and enables advanced Markdown features.
 ```yaml
 site_name: DIA Intranet / Intranet de l'AID
@@ -41,9 +41,10 @@ markdown_extensions:
 
 ```
 ---
-3. Operational Workflow (Comms Advisor)
+## 3. Operational Workflow (Comms Advisor)
 Designed for non-technical users to manage content entirely within the GitLab Web IDE.
-Step 1: Drafting in Staging
+
+### Step 1: Drafting in Staging
 Switch the branch dropdown in GCcode to `staging`.
 Click Web IDE.
 Bilingual Pairing: Ensure every page has an English (`.en.md`) and French (`.fr.md`) version.
@@ -57,18 +58,19 @@ Markdown
     ```
 Commit: Save changes to trigger the auto-preview.
 
-Step 2: Preview & Approval
+### Step 2: Preview & Approval
 Verify the build by visiting `https://intranet.dia.gc.ca/preview/`.
 Once approved, create a Merge Request from `staging` to `main`.
 
-Step 3: Deployment
+### Step 3: Deployment
 Technical Lead reviews and merges the request.
 The Production pipeline updates the live site at `https://intranet.dia.gc.ca/`.
 
 ---
-4. Component Cheat Sheet (HTML in Markdown)
+## 4. Component Cheat Sheet (HTML in Markdown)
 Drop these snippets into your Markdown files to use GCWeb design patterns.
-Page Introduction
+
+### Page Introduction
 HTML
 ```
 <div class="gc-intro-provisional">
@@ -83,7 +85,7 @@ HTML
 </div>
 
 ```
-3-Column Grid
+### 3-Column Grid
 Note: Ensure there is a blank line between the HTML tag and the Markdown header.
 HTML
 ```
@@ -108,7 +110,7 @@ Content for column three.
 
 ```
 ---
-5. Automation Pipeline (`.gitlab-ci.yml`)
+## 5. Automation Pipeline (`.gitlab-ci.yml`)
 YAML
 ```
 stages:
@@ -142,7 +144,7 @@ deploy_prod:
 
 ```
 ---
-6. NGINX Configuration
+## 6. NGINX Configuration
 Nginx
 ```
 server {
