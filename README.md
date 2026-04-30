@@ -8,6 +8,7 @@ Hosting: NGINX serving two distinct paths: `/` (Production) and `/preview` (Stag
 ---
 ## 2. Configuration Core (`mkdocs.yml`)
 The `mkdocs.yml` file manages your bilingual navigation labels and enables advanced Markdown features.
+
 ```yaml
 site_name: DIA Intranet / Intranet de l'AID
 site_url: [https://intranet.dia.gc.ca/](https://intranet.dia.gc.ca/)
@@ -49,13 +50,14 @@ Switch the branch dropdown in GCcode to `staging`.
 Click Web IDE.
 Bilingual Pairing: Ensure every page has an English (`.en.md`) and French (`.fr.md`) version.
 Metadata: Start every file with a title block:
-Markdown
+
     ```
     ---
     title: Your Page Title
     ---
     
     ```
+    
 Commit: Save changes to trigger the auto-preview.
 
 ### Step 2: Preview & Approval
@@ -71,7 +73,8 @@ The Production pipeline updates the live site at `https://intranet.dia.gc.ca/`.
 Drop these snippets into your Markdown files to use GCWeb design patterns.
 
 ### Page Introduction
-HTML
+
+
 ```
 <div class="gc-intro-provisional">
   <div class="container">
@@ -87,7 +90,8 @@ HTML
 ```
 ### 3-Column Grid
 Note: Ensure there is a blank line between the HTML tag and the Markdown header.
-HTML
+
+
 ```
 <div class="row" markdown="1">
 
@@ -111,7 +115,8 @@ Content for column three.
 ```
 ---
 ## 5. Automation Pipeline (`.gitlab-ci.yml`)
-YAML
+
+
 ```
 stages:
   - build
@@ -145,7 +150,8 @@ deploy_prod:
 ```
 ---
 ## 6. NGINX Configuration
-Nginx
+
+
 ```
 server {
     listen 80;
