@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
-        <loc>None./</loc>
+        <loc>https://plpilon.github.io/my-intranet-prototype/</loc>
         <lastmod>2026-04-30</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="en" href="None"/>
-        <xhtml:link rel="alternate" hreflang="fr" href="Nonefr/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://plpilon.github.io/my-intranet-prototype/"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://plpilon.github.io/my-intranet-prototype/fr/"/>
     </url>
     <url>
-        <loc>Noneresources/</loc>
+        <loc>https://plpilon.github.io/my-intranet-prototype/resources/</loc>
         <lastmod>2026-04-30</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="en" href="Noneresources/"/>
-        <xhtml:link rel="alternate" hreflang="fr" href="Nonefr/resources/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://plpilon.github.io/my-intranet-prototype/resources/"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://plpilon.github.io/my-intranet-prototype/fr/resources/"/>
     </url>
     <url>
-        <loc>Nonefr/</loc>
+        <loc>https://plpilon.github.io/my-intranet-prototype/fr/</loc>
         <lastmod>2026-04-30</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="fr" href="Nonefr/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="None"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://plpilon.github.io/my-intranet-prototype/fr/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://plpilon.github.io/my-intranet-prototype/"/>
     </url>
     <url>
-        <loc>Nonefr/resources/</loc>
+        <loc>https://plpilon.github.io/my-intranet-prototype/fr/resources/</loc>
         <lastmod>2026-04-30</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="fr" href="Nonefr/resources/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="Noneresources/"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://plpilon.github.io/my-intranet-prototype/fr/resources/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://plpilon.github.io/my-intranet-prototype/resources/"/>
     </url>
 </urlset>
