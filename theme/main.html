@@ -12,30 +12,22 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
 </head>
 <body vocab="http://schema.org/" typeof="WebPage">
-    <header>
+   <header>
         <div id="wb-bnr" class="container">
-            <!-- Language Selection Toggle (FIXED using native i18n_alternates) -->
-<!-- Language Selection Toggle (Restored & Bulletproofed) -->
+            <!-- Language Selection Toggle -->
             <section id="wb-lng" class="col-xs-3 col-sm-12 pull-right text-right">
                 <h2 class="wb-inv">Language selection</h2>
                 <ul class="list-inline mrgn-bttm-0">
                     {% for lang in config.plugins.i18n.config.languages %}
                         {% if lang.locale != i18n_page_locale %}
-                            
-                            <!-- 1. Get the current URL path -->
                             {% set alt_path = page.url %}
                             {% set prefix = i18n_page_locale ~ '/' %}
-                            
-                            <!-- 2. Strip the current language prefix if it exists -->
                             {% if alt_path[:prefix|length] == prefix %}
                                 {% set alt_path = alt_path[prefix|length:] %}
                             {% endif %}
-                            
-                            <!-- 3. Add the target language prefix (unless it's the default English root) -->
                             {% if not lang.default %}
                                 {% set alt_path = lang.locale ~ '/' ~ alt_path %}
                             {% endif %}
-                            
                             <li>
                                 <a lang="{{ lang.locale }}" hreflang="{{ lang.locale }}" href="{{ config.site_url }}{{ alt_path }}">
                                     <span class="hidden-xs" translate="no">{{ lang.name }}</span>
@@ -47,11 +39,32 @@
                 </ul>
             </section>
             
-            <!-- Branding -->
-            <div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
-                <a href="{{ config.site_url }}" property="url">
-                    <img src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/sig-blk-{{ i18n_page_locale }}.svg" alt="Government of Canada / Gouvernement du Canada" property="logo" />
-                </a>
+            <div class="row">
+                <!-- Branding -->
+                <div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
+                    <a href="{{ config.site_url }}" property="url">
+                        <img src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/sig-blk-{{ i18n_page_locale }}.svg" alt="Government of Canada / Gouvernement du Canada" property="logo" />
+                    </a>
+                </div>
+                
+                <!-- Search Bar -->
+                <section id="wb-srch" class="col-lg-offset-4 col-md-offset-4 col-sm-offset-2 col-xs-12 col-sm-5 col-md-4">
+                    <h2>Search</h2>
+                    <!-- Temporarily points to a generic search page we will build next -->
+                    <form action="{{ config.site_url }}search.html" method="get" name="cse-search-box" role="search">
+                        <div class="form-group wb-srch-qry">
+                            <label for="wb-srch-q" class="wb-inv">Search website</label>
+                            <input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value="" size="34" maxlength="170" placeholder="Search" />
+                            <datalist id="wb-srch-q-ac"></datalist>
+                        </div>
+                        <div class="form-group submit">
+                            <button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small" name="wb-srch-sub">
+                                <span class="glyphicon-search glyphicon"></span>
+                                <span class="wb-inv">Search</span>
+                            </button>
+                        </div>
+                    </form>
+                </section>
             </div>
         </div>
 
@@ -67,6 +80,36 @@
                         </li>
                     {% endfor %}
                 </ul>
+            </div>
+        </nav>
+        
+        <!-- Dynamic Breadcrumbs -->
+        <nav id="wb-bc" property="breadcrumb">
+            <h2>You are here:</h2>
+            <div class="container">
+                <ol class="breadcrumb" typeof="BreadcrumbList">
+                    <li property="itemListElement" typeof="ListItem">
+                        <a property="item" typeof="WebPage" href="{{ config.site_url }}">
+                            <span property="name">Home</span>
+                        </a>
+                        <meta property="position" content="1">
+                    </li>
+                    {% if page and page.ancestors %}
+                        {% for nav_item in page.ancestors %}
+                            <li property="itemListElement" typeof="ListItem">
+                                <a property="item" typeof="WebPage" href="{{ nav_item.url | url }}">
+                                    <span property="name">{{ nav_item.title }}</span>
+                                </a>
+                                <meta property="position" content="{{ loop.index + 1 }}">
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                    {% if page and page.url != "" %}
+                    <li property="itemListElement" typeof="ListItem">
+                        <span property="name">{{ page.title }}</span>
+                    </li>
+                    {% endif %}
+                </ol>
             </div>
         </nav>
     </header>
