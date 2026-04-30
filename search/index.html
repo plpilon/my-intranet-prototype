@@ -72,23 +72,30 @@
         </div>
 
         <!-- Navigation Menu -->
-        <nav class="gcweb-menu" typeof="SiteNavigationElement">
-            <div class="container">
-                <h2 class="wb-inv">Menu</h2>
-                <button type="button" aria-haspopup="true" aria-expanded="false"><span class="wb-inv">Main </span>Menu <span class="expicon glyphicon glyphicon-chevron-down"></span></button>
-                <ul role="menu" aria-orientation="vertical">
-                    
-                        <li role="presentation">
-                            <a role="menuitem" href="..">Home</a>
-                        </li>
-                    
-                        <li role="presentation">
-                            <a role="menuitem" href="../resources/">Employee Resources</a>
-                        </li>
-                    
-                </ul>
-            </div>
-        </nav>
+        <!-- Dynamic Breadcrumbs (Streamlined) -->
+<nav id="wb-bc" property="breadcrumb">
+    <h2>You are here:</h2>
+    <div class="container">
+        <ol class="breadcrumb" typeof="BreadcrumbList">
+            <li property="itemListElement" typeof="ListItem">
+                <a property="item" typeof="WebPage" href="https://plpilon.github.io/my-intranet-prototype/">
+                    <span property="name">Home</span>
+                </a>
+                <meta property="position" content="1">
+            </li>
+            
+            
+
+            <!-- This pulls the title from the Front Matter of the current page -->
+            
+            <li property="itemListElement" typeof="ListItem">
+                <span property="name">Search Results</span>
+                <meta property="position" content="2">
+            </li>
+            
+        </ol>
+    </div>
+</nav>
         
         <!-- Dynamic Breadcrumbs -->
         <nav id="wb-bc" property="breadcrumb">
