@@ -22,6 +22,24 @@ nav:
   - Home: index.md
   - Employee Resources: resources.md
 
+plugins:
+  - i18n:
+      docs_structure: suffix
+      languages:
+        - locale: en
+          name: English
+          default: true
+          # English Nav Labels
+          nav:
+            - Home: index.md
+            - Employee Resources: resources.md
+        - locale: fr
+          name: Français
+          # French Nav Labels
+          nav:
+            - Accueil: index.md
+            - Ressources pour les employés: resources.md
+
 # ADD THIS SECTION
 markdown_extensions:
   - md_in_html
