@@ -1,3 +1,6 @@
+---
+title: Ressources pour les employés
+---
 # Bienvenue sur l'intranet de l'Agence d'investissement de la défense
 
 L'Agence d'investissement de la défense (AID) agit en tant qu'organisme de service spécial, et ce carrefour fournit des directives opérationnelles de base et des nouvelles.
