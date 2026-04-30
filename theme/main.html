@@ -15,16 +15,31 @@
     <header>
         <div id="wb-bnr" class="container">
             <!-- Language Selection Toggle (FIXED using native i18n_alternates) -->
+<!-- Language Selection Toggle (Restored & Bulletproofed) -->
             <section id="wb-lng" class="col-xs-3 col-sm-12 pull-right text-right">
                 <h2 class="wb-inv">Language selection</h2>
                 <ul class="list-inline mrgn-bttm-0">
-                    {% for alternate in i18n_alternates %}
-                        {% if alternate.locale != i18n_page_locale %}
+                    {% for lang in config.plugins.i18n.config.languages %}
+                        {% if lang.locale != i18n_page_locale %}
+                            
+                            <!-- 1. Get the current URL path -->
+                            {% set alt_path = page.url %}
+                            {% set prefix = i18n_page_locale ~ '/' %}
+                            
+                            <!-- 2. Strip the current language prefix if it exists -->
+                            {% if alt_path[:prefix|length] == prefix %}
+                                {% set alt_path = alt_path[prefix|length:] %}
+                            {% endif %}
+                            
+                            <!-- 3. Add the target language prefix (unless it's the default English root) -->
+                            {% if not lang.default %}
+                                {% set alt_path = lang.locale ~ '/' ~ alt_path %}
+                            {% endif %}
+                            
                             <li>
-                                <!-- The url filter automatically handles the subfolder routing -->
-                                <a lang="{{ alternate.locale }}" hreflang="{{ alternate.locale }}" href="{{ alternate.link | url }}">
-                                    <span class="hidden-xs" translate="no">{{ alternate.name }}</span>
-                                    <abbr title="{{ alternate.name }}" translate="no" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">{{ alternate.locale }}</abbr>
+                                <a lang="{{ lang.locale }}" hreflang="{{ lang.locale }}" href="{{ config.site_url }}{{ alt_path }}">
+                                    <span class="hidden-xs" translate="no">{{ lang.name }}</span>
+                                    <abbr title="{{ lang.name }}" translate="no" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">{{ lang.locale }}</abbr>
                                 </a>
                             </li>
                         {% endif %}
