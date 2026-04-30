@@ -74,19 +74,39 @@
         </div>
 
         <!-- Navigation Menu -->
-        <nav class="gcweb-menu" typeof="SiteNavigationElement">
-            <div class="container">
-                <h2 class="wb-inv">Menu</h2>
-                <button type="button" aria-haspopup="true" aria-expanded="false"><span class="wb-inv">{% if i18n_page_locale == 'fr' %}Menu {% else %}Main {% endif %}</span>{% if i18n_page_locale == 'fr' %}principal{% else %}Menu{% endif %} <span class="expicon glyphicon glyphicon-chevron-down"></span></button>
-                <ul role="menu" aria-orientation="vertical">
-                    {% for nav_item in nav %}
-                        <li role="presentation">
-                            <a role="menuitem" href="{{ nav_item.url | url }}">{{ nav_item.title }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </nav>
+        <!-- Dynamic Breadcrumbs (Streamlined) -->
+<nav id="wb-bc" property="breadcrumb">
+    <h2>{% if i18n_page_locale == 'fr' %}Vous êtes ici :{% else %}You are here:{% endif %}</h2>
+    <div class="container">
+        <ol class="breadcrumb" typeof="BreadcrumbList">
+            <li property="itemListElement" typeof="ListItem">
+                <a property="item" typeof="WebPage" href="{{ config.site_url }}{% if i18n_page_locale != 'en' %}{{ i18n_page_locale }}/{% endif %}">
+                    <span property="name">{% if i18n_page_locale == 'fr' %}Accueil{% else %}Home{% endif %}</span>
+                </a>
+                <meta property="position" content="1">
+            </li>
+            
+            {% if page and page.ancestors %}
+                {% for nav_item in page.ancestors %}
+                    <li property="itemListElement" typeof="ListItem">
+                        <a property="item" typeof="WebPage" href="{{ nav_item.url | url }}">
+                            <span property="name">{{ nav_item.title }}</span>
+                        </a>
+                        <meta property="position" content="{{ loop.index + 1 }}">
+                    </li>
+                {% endfor %}
+            {% endif %}
+
+            <!-- This pulls the title from the Front Matter of the current page -->
+            {% if page and page.title and page.url != "" and page.url != i18n_page_locale ~ "/" %}
+            <li property="itemListElement" typeof="ListItem">
+                <span property="name">{{ page.title }}</span>
+                <meta property="position" content="{{ (page.ancestors|length) + 2 }}">
+            </li>
+            {% endif %}
+        </ol>
+    </div>
+</nav>
         
         <!-- Dynamic Breadcrumbs -->
         <nav id="wb-bc" property="breadcrumb">
