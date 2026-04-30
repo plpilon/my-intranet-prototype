@@ -141,7 +141,14 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(data => {
             let matchCount = 0;
 
-            data.docs.forEach(doc => {
+           data.docs.forEach(doc => {
+
+                // NEW FILTER: Skip any English documents
+                if (!doc.location.startsWith('fr/') && doc.location !== 'fr') {
+                    return; 
+                }
+
+                // The rest of your existing search logic stays exactly the same
                 if ((doc.title && doc.title.toLowerCase().includes(query.toLowerCase())) || 
                     (doc.text && doc.text.toLowerCase().includes(query.toLowerCase()))) {
 
