@@ -16,7 +16,7 @@
         <div id="wb-bnr" class="container">
             <!-- Language Selection Toggle -->
             <section id="wb-lng" class="col-xs-3 col-sm-12 pull-right text-right">
-                <h2 class="wb-inv">Language selection</h2>
+                <h2 class="wb-inv">{% if i18n_page_locale == 'fr' %}Sélection de la langue{% else %}Language selection{% endif %}</h2>
                 <ul class="list-inline mrgn-bttm-0">
                     {% for lang in config.plugins.i18n.config.languages %}
                         {% if lang.locale != i18n_page_locale %}
@@ -48,11 +48,9 @@
                 </div>
                 
                 <!-- Search Bar -->
-               <!-- Search Bar -->
                 <section id="wb-srch" class="col-lg-offset-4 col-md-offset-4 col-sm-offset-2 col-xs-12 col-sm-5 col-md-4">
-                    <h2>Search</h2>
+                    <h2>{% if i18n_page_locale == 'fr' %}Recherche{% else %}Search{% endif %}</h2>
                     
-                    <!-- Dynamically route to /search/ or /fr/search/ -->
                     {% set search_path = 'search/' %}
                     {% if i18n_page_locale != 'en' %}
                         {% set search_path = i18n_page_locale ~ '/search/' %}
@@ -60,15 +58,14 @@
                     
                     <form action="{{ config.site_url }}{{ search_path }}" method="get" name="cse-search-box" role="search">
                         <div class="form-group wb-srch-qry">
-                            <label for="wb-srch-q" class="wb-inv">Search website</label>
-                            <!-- Notice the name="q" attribute. This passes the query to the URL -->
-                            <input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value="" size="34" maxlength="170" placeholder="Search" />
+                            <label for="wb-srch-q" class="wb-inv">{% if i18n_page_locale == 'fr' %}Recherche dans le site Web{% else %}Search website{% endif %}</label>
+                            <input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value="" size="34" maxlength="170" placeholder="{% if i18n_page_locale == 'fr' %}Recherche{% else %}Search{% endif %}" />
                             <datalist id="wb-srch-q-ac"></datalist>
                         </div>
                         <div class="form-group submit">
                             <button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small" name="wb-srch-sub">
                                 <span class="glyphicon-search glyphicon"></span>
-                                <span class="wb-inv">Search</span>
+                                <span class="wb-inv">{% if i18n_page_locale == 'fr' %}Recherche{% else %}Search{% endif %}</span>
                             </button>
                         </div>
                     </form>
@@ -76,11 +73,11 @@
             </div>
         </div>
 
-        <!-- Minimal Navigation Menu -->
+        <!-- Navigation Menu -->
         <nav class="gcweb-menu" typeof="SiteNavigationElement">
             <div class="container">
                 <h2 class="wb-inv">Menu</h2>
-                <button type="button" aria-haspopup="true" aria-expanded="false"><span class="wb-inv">Main </span>Menu <span class="expicon glyphicon glyphicon-chevron-down"></span></button>
+                <button type="button" aria-haspopup="true" aria-expanded="false"><span class="wb-inv">{% if i18n_page_locale == 'fr' %}Menu {% else %}Main {% endif %}</span>{% if i18n_page_locale == 'fr' %}principal{% else %}Menu{% endif %} <span class="expicon glyphicon glyphicon-chevron-down"></span></button>
                 <ul role="menu" aria-orientation="vertical">
                     {% for nav_item in nav %}
                         <li role="presentation">
@@ -93,12 +90,12 @@
         
         <!-- Dynamic Breadcrumbs -->
         <nav id="wb-bc" property="breadcrumb">
-            <h2>You are here:</h2>
+            <h2>{% if i18n_page_locale == 'fr' %}Vous êtes ici :{% else %}You are here:{% endif %}</h2>
             <div class="container">
                 <ol class="breadcrumb" typeof="BreadcrumbList">
                     <li property="itemListElement" typeof="ListItem">
-                        <a property="item" typeof="WebPage" href="{{ config.site_url }}">
-                            <span property="name">Home</span>
+                        <a property="item" typeof="WebPage" href="{{ config.site_url }}{% if i18n_page_locale != 'en' %}{{ i18n_page_locale }}/{% endif %}">
+                            <span property="name">{% if i18n_page_locale == 'fr' %}Accueil{% else %}Home{% endif %}</span>
                         </a>
                         <meta property="position" content="1">
                     </li>
@@ -112,7 +109,7 @@
                             </li>
                         {% endfor %}
                     {% endif %}
-                    {% if page and page.url != "" %}
+                    {% if page and page.url != "" and page.url != i18n_page_locale ~ "/" %}
                     <li property="itemListElement" typeof="ListItem">
                         <span property="name">{{ page.title }}</span>
                     </li>
@@ -126,18 +123,23 @@
         {{ page.content }}
     </main>
 
-    <!-- Footer (FIXED using modern GCWeb layout) -->
     <footer id="wb-info">
-        <h2 class="wb-inv">About this site</h2>
+        <h2 class="wb-inv">{% if i18n_page_locale == 'fr' %}À propos de ce site{% else %}About this site{% endif %}</h2>
         
         <div class="gc-main-footer">
             <div class="container">
                 <nav>
-                    <h3>Defence Investment Agency Intranet</h3>
+                    <h3>{% if i18n_page_locale == 'fr' %}Intranet de l'Agence d'investissement de la défense{% else %}Defence Investment Agency Intranet{% endif %}</h3>
                     <ul class="list-col-xs-1 list-col-sm-2 list-col-md-3">
-                        <li><a href="#">Contact IT Support</a></li>
-                        <li><a href="#">Employee Directory</a></li>
-                        <li><a href="#">Facility Access</a></li>
+                        {% if i18n_page_locale == 'fr' %}
+                            <li><a href="#">Soutien informatique</a></li>
+                            <li><a href="#">Répertoire des employés</a></li>
+                            <li><a href="#">Accès aux installations</a></li>
+                        {% else %}
+                            <li><a href="#">Contact IT Support</a></li>
+                            <li><a href="#">Employee Directory</a></li>
+                            <li><a href="#">Facility Access</a></li>
+                        {% endif %}
                     </ul>
                 </nav>
             </div>
@@ -146,14 +148,19 @@
         <div class="gc-sub-footer">
             <div class="container d-flex align-items-center">
                 <nav>
-                    <h3 class="wb-inv">Government of Canada Corporate</h3>
+                    <h3 class="wb-inv">{% if i18n_page_locale == 'fr' %}Gouvernement du Canada{% else %}Government of Canada Corporate{% endif %}</h3>
                     <ul>
-                        <li><a href="#">Terms and conditions</a></li>
-                        <li><a href="#">Privacy</a></li>
+                        {% if i18n_page_locale == 'fr' %}
+                            <li><a href="#">Avis</a></li>
+                            <li><a href="#">Confidentialité</a></li>
+                        {% else %}
+                            <li><a href="#">Terms and conditions</a></li>
+                            <li><a href="#">Privacy</a></li>
+                        {% endif %}
                     </ul>
                 </nav>
                 <div class="wtrmrk align-self-end">
-                    <img src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
+                    <img src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/wmms-blk.svg" alt="{% if i18n_page_locale == 'fr' %}Symbole du gouvernement du Canada{% else %}Symbol of the Government of Canada{% endif %}" />
                 </div>
             </div>
         </div>
