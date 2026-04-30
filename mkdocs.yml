@@ -21,3 +21,8 @@ plugins:
 nav:
   - Home: index.md
   - Employee Resources: resources.md
+
+# ADD THIS SECTION
+markdown_extensions:
+  - md_in_html
+  - attr_list
