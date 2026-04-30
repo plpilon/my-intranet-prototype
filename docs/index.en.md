@@ -3,8 +3,8 @@
   <div class="container">
     <div class="row">
       <div class="col-md-7 col-sm-12 col-xs-12">
-        <h1 class="h1">Defence Investment Agency Operations</h1>
-        <p>Welcome to the DIA hub. This platform provides operational guidance, sovereign data architecture requirements, and enterprise policy frameworks.</p>
+        <h1 class="h1">XYZ Operations</h1>
+        <p>Welcome to the XYZ hub. This platform provides operational guidance, sovereign data architecture requirements, and enterprise policy frameworks.</p>
       </div>
     </div>
   </div>
