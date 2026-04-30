@@ -1,4 +1,6 @@
 site_name: Defence Investment Agency Intranet
+site_url: https://plpilon.github.io/my-intranet-prototype/
+
 theme:
   name: null
   custom_dir: theme
