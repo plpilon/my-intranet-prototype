@@ -1,0 +1,21 @@
+site_name: Defence Investment Agency Intranet
+theme:
+  name: null
+  custom_dir: theme
+
+plugins:
+  - search:
+      lang: [en, fr]
+  - i18n:
+      docs_structure: suffix
+      fallback_to_default: true
+      languages:
+        - locale: en
+          name: English
+          default: true
+        - locale: fr
+          name: Français
+
+nav:
+  - Home: index.md
+  - Employee Resources: resources.md
