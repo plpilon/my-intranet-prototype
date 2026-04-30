@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en" dir="ltr">
+<html class="no-js" lang="fr" dir="ltr">
 <head>
     <meta charset="utf-8">
-    <title>Home - Defence Investment Agency Intranet</title>
+    <title>Résultats de la recherche - Defence Investment Agency Intranet</title>
     <meta content="width=device-width,initial-scale=1" name="viewport">
     
     <!-- GCWeb CSS -->
@@ -20,20 +20,20 @@
                 <ul class="list-inline mrgn-bttm-0">
                     
                         
-                    
-                        
-                            
                             
                             
                             
                                 
                             
+                            
                             <li>
-                                <a lang="fr" hreflang="fr" href="https://plpilon.github.io/my-intranet-prototype/fr/">
-                                    <span class="hidden-xs" translate="no">Français</span>
-                                    <abbr title="Français" translate="no" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">fr</abbr>
+                                <a lang="en" hreflang="en" href="https://plpilon.github.io/my-intranet-prototype/search/">
+                                    <span class="hidden-xs" translate="no">English</span>
+                                    <abbr title="English" translate="no" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">en</abbr>
                                 </a>
                             </li>
+                        
+                    
                         
                     
                 </ul>
@@ -43,7 +43,7 @@
                 <!-- Branding -->
                 <div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
                     <a href="https://plpilon.github.io/my-intranet-prototype/" property="url">
-                        <img src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada / Gouvernement du Canada" property="logo" />
+                        <img src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/sig-blk-fr.svg" alt="Government of Canada / Gouvernement du Canada" property="logo" />
                     </a>
                 </div>
                 
@@ -55,8 +55,10 @@
                     <!-- Dynamically route to /search/ or /fr/search/ -->
                     
                     
+                        
                     
-                    <form action="https://plpilon.github.io/my-intranet-prototype/search/" method="get" name="cse-search-box" role="search">
+                    
+                    <form action="https://plpilon.github.io/my-intranet-prototype/fr/search/" method="get" name="cse-search-box" role="search">
                         <div class="form-group wb-srch-qry">
                             <label for="wb-srch-q" class="wb-inv">Search website</label>
                             <!-- Notice the name="q" attribute. This passes the query to the URL -->
@@ -82,11 +84,11 @@
                 <ul role="menu" aria-orientation="vertical">
                     
                         <li role="presentation">
-                            <a role="menuitem" href=".">Home</a>
+                            <a role="menuitem" href="../">Home</a>
                         </li>
                     
                         <li role="presentation">
-                            <a role="menuitem" href="resources/">Employee Resources</a>
+                            <a role="menuitem" href="../resources/">Employee Resources</a>
                         </li>
                     
                 </ul>
@@ -106,41 +108,68 @@
                     </li>
                     
                     
+                    <li property="itemListElement" typeof="ListItem">
+                        <span property="name">Résultats de la recherche</span>
+                    </li>
+                    
                 </ol>
             </div>
         </nav>
     </header>
 
     <main property="mainContentOfPage" class="container" typeof="WebPageElement">
-        <!-- The GCWeb Introduction Block -->
-<div class="gc-intro-provisional">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-7 col-sm-12 col-xs-12">
-        <h1 class="h1">Defence Investment Agency Operations</h1>
-        <p>Welcome to the DIA hub. This platform provides operational guidance, sovereign data architecture requirements, and enterprise policy frameworks.</p>
-      </div>
-    </div>
-  </div>
+        <h1 id="resultats-de-la-recherche">Résultats de la recherche</h1>
+<div class="mrgn-tp-lg" id="search-results-container">
+<p>Chargement des résultats...</p>
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const query = urlParams.get('q');
+    const container = document.getElementById('search-results-container');
 
-<hr />
+    if (!query) {
+        container.innerHTML = '<div class="alert alert-info"><p>Veuillez entrer un mot-clé dans la barre de recherche ci-dessus.</p></div>';
+        return;
+    }
 
-<!-- A Standard 3-Column Grid -->
-<div class="row">
-<div class="col-md-4">
-<h3 id="data-architecture">Data Architecture</h3>
-<p>New documentation available regarding the SAP S/4HANA integration model and our transition away from standard departmental branches.</p>
-</div>
-<div class="col-md-4">
-<h3 id="governance-sovereign-stacks">Governance &amp; Sovereign Stacks</h3>
-<p>Ensure all project deployments comply with our local, non-vendor-locked data capabilities and Purview guidelines.</p>
-</div>
-<div class="col-md-4">
-<h3 id="employee-training">Employee Training</h3>
-<p>Access the SkillTape learning platform and find schedules for the upcoming official language learning circles.</p>
-</div>
-</div>
+    container.innerHTML = '<h2>Résultats pour : <strong>' + query + '</strong></h2><ul class="list-unstyled mrgn-tp-md" id="results-list"></ul>';
+    const resultsList = document.getElementById('results-list');
+
+    fetch('./search_index.json')
+        .then(response => response.json())
+        .then(data => {
+            let matchCount = 0;
+
+            data.docs.forEach(doc => {
+                if ((doc.title && doc.title.toLowerCase().includes(query.toLowerCase())) || 
+                    (doc.text && doc.text.toLowerCase().includes(query.toLowerCase()))) {
+
+                    matchCount++;
+                    const li = document.createElement('li');
+                    li.className = "mrgn-bttm-lg";
+
+                    const preview = doc.text.substring(0, 200).replace(/#/g, '') + '...';
+                    const link = '../' + doc.location; 
+
+                    li.innerHTML = `
+                        <h3 class="h4 mrgn-bttm-sm"><a href="${link}">${doc.title}</a></h3>
+                        <p>${preview}</p>
+                    `;
+                    resultsList.appendChild(li);
+                }
+            });
+
+            if (matchCount === 0) {
+                container.innerHTML += '<div class="alert alert-warning"><p>Aucun document correspondant trouvé.</p></div>';
+            }
+        })
+        .catch(err => {
+            container.innerHTML = '<div class="alert alert-danger"><p>Erreur lors du chargement de l\'index de recherche.</p></div>';
+            console.error(err);
+        });
+});
+</script>
     </main>
 
     <!-- Footer (FIXED using modern GCWeb layout) -->

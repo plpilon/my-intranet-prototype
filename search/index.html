@@ -2,7 +2,7 @@
 <html class="no-js" lang="en" dir="ltr">
 <head>
     <meta charset="utf-8">
-    <title>Home - Defence Investment Agency Intranet</title>
+    <title>Search - Defence Investment Agency Intranet</title>
     <meta content="width=device-width,initial-scale=1" name="viewport">
     
     <!-- GCWeb CSS -->
@@ -29,7 +29,7 @@
                                 
                             
                             <li>
-                                <a lang="fr" hreflang="fr" href="https://plpilon.github.io/my-intranet-prototype/fr/">
+                                <a lang="fr" hreflang="fr" href="https://plpilon.github.io/my-intranet-prototype/fr/search/">
                                     <span class="hidden-xs" translate="no">Français</span>
                                     <abbr title="Français" translate="no" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">fr</abbr>
                                 </a>
@@ -82,11 +82,11 @@
                 <ul role="menu" aria-orientation="vertical">
                     
                         <li role="presentation">
-                            <a role="menuitem" href=".">Home</a>
+                            <a role="menuitem" href="..">Home</a>
                         </li>
                     
                         <li role="presentation">
-                            <a role="menuitem" href="resources/">Employee Resources</a>
+                            <a role="menuitem" href="../resources/">Employee Resources</a>
                         </li>
                     
                 </ul>
@@ -106,41 +106,42 @@
                     </li>
                     
                     
+                    <li property="itemListElement" typeof="ListItem">
+                        <span property="name">Search</span>
+                    </li>
+                    
                 </ol>
             </div>
         </nav>
     </header>
 
     <main property="mainContentOfPage" class="container" typeof="WebPageElement">
-        <!-- The GCWeb Introduction Block -->
-<div class="gc-intro-provisional">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-7 col-sm-12 col-xs-12">
-        <h1 class="h1">Defence Investment Agency Operations</h1>
-        <p>Welcome to the DIA hub. This platform provides operational guidance, sovereign data architecture requirements, and enterprise policy frameworks.</p>
-      </div>
-    </div>
-  </div>
-</div>
+        <!-- Search Bar -->
+<pre><code>            &lt;section id="wb-srch" class="col-lg-offset-4 col-md-offset-4 col-sm-offset-2 col-xs-12 col-sm-5 col-md-4"&gt;
+                &lt;h2&gt;Search&lt;/h2&gt;
 
-<hr />
+                &lt;!-- Dynamically route to /search/ or /fr/search/ --&gt;
+                {% set search_path = 'search/' %}
+                {% if i18n_page_locale != 'en' %}
+                    {% set search_path = i18n_page_locale ~ '/search/' %}
+                {% endif %}
 
-<!-- A Standard 3-Column Grid -->
-<div class="row">
-<div class="col-md-4">
-<h3 id="data-architecture">Data Architecture</h3>
-<p>New documentation available regarding the SAP S/4HANA integration model and our transition away from standard departmental branches.</p>
-</div>
-<div class="col-md-4">
-<h3 id="governance-sovereign-stacks">Governance &amp; Sovereign Stacks</h3>
-<p>Ensure all project deployments comply with our local, non-vendor-locked data capabilities and Purview guidelines.</p>
-</div>
-<div class="col-md-4">
-<h3 id="employee-training">Employee Training</h3>
-<p>Access the SkillTape learning platform and find schedules for the upcoming official language learning circles.</p>
-</div>
-</div>
+                &lt;form action="{{ config.site_url }}{{ search_path }}" method="get" name="cse-search-box" role="search"&gt;
+                    &lt;div class="form-group wb-srch-qry"&gt;
+                        &lt;label for="wb-srch-q" class="wb-inv"&gt;Search website&lt;/label&gt;
+                        &lt;!-- Notice the name="q" attribute. This passes the query to the URL --&gt;
+                        &lt;input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value="" size="34" maxlength="170" placeholder="Search" /&gt;
+                        &lt;datalist id="wb-srch-q-ac"&gt;&lt;/datalist&gt;
+                    &lt;/div&gt;
+                    &lt;div class="form-group submit"&gt;
+                        &lt;button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small" name="wb-srch-sub"&gt;
+                            &lt;span class="glyphicon-search glyphicon"&gt;&lt;/span&gt;
+                            &lt;span class="wb-inv"&gt;Search&lt;/span&gt;
+                        &lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/form&gt;
+            &lt;/section&gt;
+</code></pre>
     </main>
 
     <!-- Footer (FIXED using modern GCWeb layout) -->

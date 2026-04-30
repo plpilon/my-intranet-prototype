@@ -15,6 +15,13 @@
         <xhtml:link rel="alternate" hreflang="fr" href="https://plpilon.github.io/my-intranet-prototype/fr/resources/"/>
     </url>
     <url>
+        <loc>https://plpilon.github.io/my-intranet-prototype/search/</loc>
+        <lastmod>2026-04-30</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://plpilon.github.io/my-intranet-prototype/search/"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://plpilon.github.io/my-intranet-prototype/fr/search/"/>
+    </url>
+    <url>
         <loc>https://plpilon.github.io/my-intranet-prototype/fr/</loc>
         <lastmod>2026-04-30</lastmod>
         <changefreq>daily</changefreq>
@@ -27,5 +34,12 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="fr" href="https://plpilon.github.io/my-intranet-prototype/fr/resources/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://plpilon.github.io/my-intranet-prototype/resources/"/>
+    </url>
+    <url>
+        <loc>https://plpilon.github.io/my-intranet-prototype/fr/search/</loc>
+        <lastmod>2026-04-30</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://plpilon.github.io/my-intranet-prototype/fr/search/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://plpilon.github.io/my-intranet-prototype/search/"/>
     </url>
 </urlset>
