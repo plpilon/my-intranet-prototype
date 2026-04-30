@@ -1,3 +1,7 @@
+---
+title: Employee Resources
+---
+
 # Employee Resources
 
 Find all necessary administrative, technical, and human resource policies here.
