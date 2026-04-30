@@ -2,7 +2,7 @@
 <html class="no-js" lang="fr" dir="ltr">
 <head>
     <meta charset="utf-8">
-    <title>Search - Defence Investment Agency Intranet</title>
+    <title>Search - XYZ Intranet</title>
     <meta content="width=device-width,initial-scale=1" name="viewport">
     
     <!-- GCWeb CSS -->
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
 </head>
 <body vocab="http://schema.org/" typeof="WebPage">
-   <header>
+    <header>
         <div id="wb-bnr" class="container">
             <!-- Language Selection Toggle -->
             <section id="wb-lng" class="col-xs-3 col-sm-12 pull-right text-right">
@@ -40,27 +40,20 @@
             </section>
             
             <div class="row">
-                <!-- Branding -->
                 <div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
-                    <a href="https://plpilon.github.io/my-intranet-prototype/" property="url">
+                    <a href="https://plpilon.github.io/my-intranet-prototype/fr/" property="url">
                         <img src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/sig-blk-fr.svg" alt="Government of Canada / Gouvernement du Canada" property="logo" />
                     </a>
                 </div>
                 
-                <!-- Search Bar -->
                 <section id="wb-srch" class="col-lg-offset-4 col-md-offset-4 col-sm-offset-2 col-xs-12 col-sm-5 col-md-4">
                     <h2>Recherche</h2>
-                    
-                    
-                    
-                        
                     
                     
                     <form action="https://plpilon.github.io/my-intranet-prototype/fr/search/" method="get" name="cse-search-box" role="search">
                         <div class="form-group wb-srch-qry">
                             <label for="wb-srch-q" class="wb-inv">Recherche dans le site Web</label>
-                            <input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value="" size="34" maxlength="170" placeholder="Recherche" />
-                            <datalist id="wb-srch-q-ac"></datalist>
+                            <input id="wb-srch-q" class="wb-srch-q form-control" name="q" type="search" value="" size="34" maxlength="170" placeholder="Recherche" />
                         </div>
                         <div class="form-group submit">
                             <button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small" name="wb-srch-sub">
@@ -73,33 +66,26 @@
             </div>
         </div>
 
-        <!-- Navigation Menu -->
-        <!-- Dynamic Breadcrumbs (Streamlined) -->
-<nav id="wb-bc" property="breadcrumb">
-    <h2>Vous êtes ici :</h2>
-    <div class="container">
-        <ol class="breadcrumb" typeof="BreadcrumbList">
-            <li property="itemListElement" typeof="ListItem">
-                <a property="item" typeof="WebPage" href="https://plpilon.github.io/my-intranet-prototype/fr/">
-                    <span property="name">Accueil</span>
-                </a>
-                <meta property="position" content="1">
-            </li>
-            
-            
-
-            <!-- This pulls the title from the Front Matter of the current page -->
-            
-            <li property="itemListElement" typeof="ListItem">
-                <span property="name">Search</span>
-                <meta property="position" content="2">
-            </li>
-            
-        </ol>
-    </div>
-</nav>
+        <!-- Navigation Menu (Fixed loop to use YAML nav) -->
+        <nav class="gcweb-menu" typeof="SiteNavigationElement">
+            <div class="container">
+                <h2 class="wb-inv">Menu</h2>
+                <button type="button" aria-haspopup="true" aria-expanded="false"><span class="wb-inv">Menu </span>principal <span class="expicon glyphicon glyphicon-chevron-down"></span></button>
+                <ul role="menu" aria-orientation="vertical">
+                    
+                        <li role="presentation">
+                            <a role="menuitem" href="../">Accueil</a>
+                        </li>
+                    
+                        <li role="presentation">
+                            <a role="menuitem" href="../resources/">Ressources pour les employés</a>
+                        </li>
+                    
+                </ul>
+            </div>
+        </nav>
         
-        <!-- Dynamic Breadcrumbs -->
+        <!-- Breadcrumbs (Cleaned up duplicates) -->
         <nav id="wb-bc" property="breadcrumb">
             <h2>Vous êtes ici :</h2>
             <div class="container">
@@ -114,6 +100,7 @@
                     
                     <li property="itemListElement" typeof="ListItem">
                         <span property="name">Search</span>
+                        <meta property="position" content="2">
                     </li>
                     
                 </ol>
@@ -182,39 +169,7 @@ document.addEventListener("DOMContentLoaded", function() {
     </main>
 
     <footer id="wb-info">
-        <h2 class="wb-inv">À propos de ce site</h2>
-        
-        <div class="gc-main-footer">
-            <div class="container">
-                <nav>
-                    <h3>Intranet de l'Agence d'investissement de la défense</h3>
-                    <ul class="list-col-xs-1 list-col-sm-2 list-col-md-3">
-                        
-                            <li><a href="#">Soutien informatique</a></li>
-                            <li><a href="#">Répertoire des employés</a></li>
-                            <li><a href="#">Accès aux installations</a></li>
-                        
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        
-        <div class="gc-sub-footer">
-            <div class="container d-flex align-items-center">
-                <nav>
-                    <h3 class="wb-inv">Gouvernement du Canada</h3>
-                    <ul>
-                        
-                            <li><a href="#">Avis</a></li>
-                            <li><a href="#">Confidentialité</a></li>
-                        
-                    </ul>
-                </nav>
-                <div class="wtrmrk align-self-end">
-                    <img src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
-                </div>
-            </div>
-        </div>
+        <!-- ... (Keep your existing footer code here) ... -->
     </footer>
 
     <!-- GCWeb JS -->
