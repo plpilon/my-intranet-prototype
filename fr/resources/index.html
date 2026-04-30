@@ -12,26 +12,18 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
 </head>
 <body vocab="http://schema.org/" typeof="WebPage">
-    <header>
+   <header>
         <div id="wb-bnr" class="container">
-            <!-- Language Selection Toggle (FIXED using native i18n_alternates) -->
-<!-- Language Selection Toggle (Restored & Bulletproofed) -->
+            <!-- Language Selection Toggle -->
             <section id="wb-lng" class="col-xs-3 col-sm-12 pull-right text-right">
                 <h2 class="wb-inv">Language selection</h2>
                 <ul class="list-inline mrgn-bttm-0">
                     
                         
                             
-                            <!-- 1. Get the current URL path -->
                             
-                            
-                            
-                            <!-- 2. Strip the current language prefix if it exists -->
                             
                                 
-                            
-                            
-                            <!-- 3. Add the target language prefix (unless it's the default English root) -->
                             
                             
                             <li>
@@ -47,11 +39,32 @@
                 </ul>
             </section>
             
-            <!-- Branding -->
-            <div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
-                <a href="https://plpilon.github.io/my-intranet-prototype/" property="url">
-                    <img src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/sig-blk-fr.svg" alt="Government of Canada / Gouvernement du Canada" property="logo" />
-                </a>
+            <div class="row">
+                <!-- Branding -->
+                <div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
+                    <a href="https://plpilon.github.io/my-intranet-prototype/" property="url">
+                        <img src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/sig-blk-fr.svg" alt="Government of Canada / Gouvernement du Canada" property="logo" />
+                    </a>
+                </div>
+                
+                <!-- Search Bar -->
+                <section id="wb-srch" class="col-lg-offset-4 col-md-offset-4 col-sm-offset-2 col-xs-12 col-sm-5 col-md-4">
+                    <h2>Search</h2>
+                    <!-- Temporarily points to a generic search page we will build next -->
+                    <form action="https://plpilon.github.io/my-intranet-prototype/search.html" method="get" name="cse-search-box" role="search">
+                        <div class="form-group wb-srch-qry">
+                            <label for="wb-srch-q" class="wb-inv">Search website</label>
+                            <input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value="" size="34" maxlength="170" placeholder="Search" />
+                            <datalist id="wb-srch-q-ac"></datalist>
+                        </div>
+                        <div class="form-group submit">
+                            <button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small" name="wb-srch-sub">
+                                <span class="glyphicon-search glyphicon"></span>
+                                <span class="wb-inv">Search</span>
+                            </button>
+                        </div>
+                    </form>
+                </section>
             </div>
         </div>
 
@@ -71,6 +84,27 @@
                         </li>
                     
                 </ul>
+            </div>
+        </nav>
+        
+        <!-- Dynamic Breadcrumbs -->
+        <nav id="wb-bc" property="breadcrumb">
+            <h2>You are here:</h2>
+            <div class="container">
+                <ol class="breadcrumb" typeof="BreadcrumbList">
+                    <li property="itemListElement" typeof="ListItem">
+                        <a property="item" typeof="WebPage" href="https://plpilon.github.io/my-intranet-prototype/">
+                            <span property="name">Home</span>
+                        </a>
+                        <meta property="position" content="1">
+                    </li>
+                    
+                    
+                    <li property="itemListElement" typeof="ListItem">
+                        <span property="name">Employee Resources</span>
+                    </li>
+                    
+                </ol>
             </div>
         </nav>
     </header>
