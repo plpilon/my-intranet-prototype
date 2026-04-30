@@ -1,9 +1,3 @@
-# Résultats de la recherche
-
-<div id="search-results-container" class="mrgn-tp-lg" markdown="1">
-  <p>Chargement des résultats...</p>
-</div>
-
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -18,19 +12,19 @@ document.addEventListener("DOMContentLoaded", function() {
     container.innerHTML = '<h2>Résultats pour : <strong>' + query + '</strong></h2><ul class="list-unstyled mrgn-tp-md" id="results-list"></ul>';
     const resultsList = document.getElementById('results-list');
 
-    fetch('./search_index.json')
+    // FIXED: Use the absolute path to the root search index
+    fetch('/my-intranet-prototype/search/search_index.json')
         .then(response => response.json())
         .then(data => {
             let matchCount = 0;
             
            data.docs.forEach(doc => {
                 
-                // NEW FILTER: Skip any English documents
+                // Skip any English documents
                 if (!doc.location.startsWith('fr/') && doc.location !== 'fr') {
                     return; 
                 }
 
-                // The rest of your existing search logic stays exactly the same
                 if ((doc.title && doc.title.toLowerCase().includes(query.toLowerCase())) || 
                     (doc.text && doc.text.toLowerCase().includes(query.toLowerCase()))) {
                     
@@ -39,7 +33,9 @@ document.addEventListener("DOMContentLoaded", function() {
                     li.className = "mrgn-bttm-lg";
                     
                     const preview = doc.text.substring(0, 200).replace(/#/g, '') + '...';
-                    const link = '../' + doc.location; 
+                    
+                    // FIXED: Use absolute path for the result links
+                    const link = '/my-intranet-prototype/' + doc.location; 
                     
                     li.innerHTML = `
                         <h3 class="h4 mrgn-bttm-sm"><a href="${link}">${doc.title}</a></h3>
