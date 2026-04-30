@@ -26,7 +26,13 @@ document.addEventListener("DOMContentLoaded", function() {
             
             // Loop through all documents in the site
             data.docs.forEach(doc => {
-                // Case-insensitive check on title and content
+                
+                // NEW FILTER: Skip any French documents
+                if (doc.location.startsWith('fr/') || doc.location === 'fr') {
+                    return; 
+                }
+
+                // The rest of your existing search logic stays exactly the same
                 if ((doc.title && doc.title.toLowerCase().includes(query.toLowerCase())) || 
                     (doc.text && doc.text.toLowerCase().includes(query.toLowerCase()))) {
                     
@@ -34,10 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     const li = document.createElement('li');
                     li.className = "mrgn-bttm-lg";
                     
-                    // Clean up the text preview (strip markdown hashes)
                     const preview = doc.text.substring(0, 200).replace(/#/g, '') + '...';
-                    
-                    // Link back to the root level
                     const link = '../' + doc.location; 
                     
                     li.innerHTML = `
