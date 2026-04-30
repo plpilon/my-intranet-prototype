@@ -5,7 +5,7 @@
     <title>Employee Resources - Defence Investment Agency Intranet</title>
     <meta content="width=device-width,initial-scale=1" name="viewport">
     
-    <!-- GCWeb CSS (Updated Links) -->
+    <!-- GCWeb CSS -->
     <link href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/css/theme.min.css" />
     <noscript><link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/css/noscript.min.css" /></noscript>
@@ -14,29 +14,19 @@
 <body vocab="http://schema.org/" typeof="WebPage">
     <header>
         <div id="wb-bnr" class="container">
-            <!-- Language Selection Toggle -->
-            <section id="wb-lng" class="text-right">
+            <!-- Language Selection Toggle (FIXED using native i18n_alternates) -->
+            <section id="wb-lng" class="col-xs-3 col-sm-12 pull-right text-right">
                 <h2 class="wb-inv">Language selection</h2>
-                <ul class="list-inline margin-bottom-none">
-                    
-                        
-                    
-                        
-                            
-                            <li><a lang="fr" href="https://plpilon.github.io/my-intranet-prototype/resources/">Français</a></li>
-                        
+                <ul class="list-inline mrgn-bttm-0">
                     
                 </ul>
             </section>
             
             <!-- Branding -->
-            <div class="row">
-                <div class="brand col-xs-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
-                    <a href="https://plpilon.github.io/my-intranet-prototype/" property="url">
-                        <!-- Updated SVG path to match the new CDN structure -->
-                        <img src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada / Gouvernement du Canada" property="logo" />
-                    </a>
-                </div>
+            <div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
+                <a href="https://plpilon.github.io/my-intranet-prototype/" property="url">
+                    <img src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada / Gouvernement du Canada" property="logo" />
+                </a>
             </div>
         </div>
 
@@ -73,20 +63,41 @@
 </ul>
     </main>
 
+    <!-- Footer (FIXED using modern GCWeb layout) -->
     <footer id="wb-info">
-        <div class="landscape">
-            <nav class="container wb-navcurr">
-                <h2 class="wb-inv">About government</h2>
-                <ul class="list-unstyled colcount-sm-2 colcount-md-3">
-                    <li><a href="#">Contact us</a></li>
-                    <li><a href="#">Departments and agencies</a></li>
-                </ul>
-            </nav>
+        <h2 class="wb-inv">About this site</h2>
+        
+        <div class="gc-main-footer">
+            <div class="container">
+                <nav>
+                    <h3>Defence Investment Agency Intranet</h3>
+                    <ul class="list-col-xs-1 list-col-sm-2 list-col-md-3">
+                        <li><a href="#">Contact IT Support</a></li>
+                        <li><a href="#">Employee Directory</a></li>
+                        <li><a href="#">Facility Access</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        
+        <div class="gc-sub-footer">
+            <div class="container d-flex align-items-center">
+                <nav>
+                    <h3 class="wb-inv">Government of Canada Corporate</h3>
+                    <ul>
+                        <li><a href="#">Terms and conditions</a></li>
+                        <li><a href="#">Privacy</a></li>
+                    </ul>
+                </nav>
+                <div class="wtrmrk align-self-end">
+                    <img src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
+                </div>
+            </div>
         </div>
     </footer>
 
-    <!-- GCWeb JS (Updated paths to match the CSS structure) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <!-- GCWeb JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
     <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/wet-boew.min.js"></script>
     <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
 </body>
